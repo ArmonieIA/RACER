@@ -187,3 +187,108 @@ Le programme RACERILE utilise des écrans qui doivent être présents dans la bi
 Le programme RACERILE utilise des données stockées dans des data areas. Il est recommandé de vérifier la présence de ces data areas avant d'exécuter le programme.
 
 Le programme RACERILE utilise des commandes système qui nécessitent des autorisations spécifiques. Il est recommandé de vérifier les autorisations de l'utilisateur avant d'exécuter le programme.
+
+RACERILE : Explication détaillée du code
+=======================================
+
+Dans ce document, nous allons expliquer en détail le code du programme RACERILE.
+
+Déclaration des variables et des fichiers
+-----------------------------------------
+
+Le programme RACERILE commence par la déclaration de plusieurs variables et fichiers. Voici une explication détaillée de chacune d'entre elles :
+
+### Variables
+
+* `SflPag` et `SflMax` : ces deux constantes définissent respectivement le nombre de lignes à afficher par page dans le sous-fichier et le nombre maximum de lignes que peut contenir le sous-fichier.
+* `Lstrrn` : cette variable de type packed stocke le dernier numéro d'enregistrement écrit dans le sous-fichier avant la pagination.
+* `Decodage` : cette variable de type caractère stocke le code d'autorisation saisi par l'utilisateur.
+* `chk` : cette variable de type entier est utilisée pour stocker le nombre d'enregistrements lus dans le fichier RACEL1.
+* `i` : cette variable de type packed est utilisée comme compteur dans les boucles.
+* `pos` : cette variable de type packed est utilisée pour stocker la position actuelle dans le tableau.
+* `rang_race` : cette variable de type packed est utilisée pour stocker le rang de la course dans le fichier RACEL1.
+* `norang_sfl` : cette variable de type packed est utilisée pour stocker le numéro d'enregistrement de la course dans le sous-fichier.
+* `autorisation_modif` : cette variable de type indicateur est utilisée pour stocker l'autorisation de modification de l'utilisateur.
+
+### Fichiers
+
+* `RACEDILE` : ce fichier de travail station est utilisé pour afficher les enregistrements du sous-fichier.
+* `RACETP1` : ce fichier disque clé est utilisé pour stocker les types de courses.
+* `RACEL1` : ce fichier disque est utilisé pour stocker les enregistrements de course.
+
+Initialisation du programme
+---------------------------
+
+Le programme commence par l'initialisation de certaines variables et la vérification de l'ouverture du fichier RACEL1. Si le fichier n'est pas ouvert, il est ouvert en mode entrée/sortie avec verrouillage exclusif.
+
+Traitement du READC
+-------------------
+
+Le programme traite ensuite le READC du sous-fichier. Le READC est une opération qui lit toutes les lignes modifiées du sous-fichier. Dans RACERILE, le READC est utilisé pour traiter les options saisies par l'utilisateur.
+
+Les options disponibles sont les suivantes :
+
+* `Afficher` : cette option permet d'afficher les détails de la course sélectionnée.
+* `Kill` : cette option permet de supprimer la course sélectionnée.
+* `Modification` : cette option permet de modifier la course sélectionnée.
+* `Opt_imprimer` : cette option permet d'imprimer la course sélectionnée.
+
+Pour chaque option, le programme appelle une procédure dédiée.
+
+Traitement de l'option 8=Imprimer
+---------------------------------
+
+La procédure `Imprimere` est appelée lorsque l'utilisateur sélectionne l'option 8=Imprimer. Cette procédure appelle le programme d'impression `RACEPRINT` en passant le numéro de course à imprimer en paramètre.
+
+Traitement de l'option 2=Modification
+-------------------------------------
+
+La procédure `Recencere` est appelée lorsque l'utilisateur sélectionne l'option 2=Modification. Cette procédure permet de modifier les informations de la course sélectionnée.
+
+Tout d'abord, les informations de la course sélectionnée sont transférées dans le format écran `FMT2`. Ensuite, le programme entre dans une boucle infinie qui affiche le format écran `FMT2` et attend que l'utilisateur saisisse une option.
+
+Les options disponibles sont les suivantes :
+
+* `Sortie` : cette option permet de quitter la procédure de modification.
+* `Annuler` : cette option permet d'annuler les modifications apportées à la course sélectionnée.
+
+Si l'utilisateur saisit l'option `Confirmer`, le programme vérifie si le mot de passe saisi est correct en appelant la fonction `ok_modif`. Si le mot de passe est correct, les informations modifiées sont enregistrées dans le fichier RACEL1.
+
+Traitement de l'option 5=Afficher
+---------------------------------
+
+La procédure `Ostendere` est appelée lorsque l'utilisateur sélectionne l'option 5=Afficher. Cette procédure affiche les détails de la course sélectionnée dans le format écran `FMT5`.
+
+Traitement de l'option 4=Supprimer
+---------------------------------
+
+La procédure `Occidere` est appelée lorsque l'utilisateur sélectionne l'option 4=Supprimer. Cette procédure permet de supprimer la course sélectionnée du fichier RACEL1.
+
+Tout d'abord, les informations de la course sélectionnée sont transférées dans le format écran `FMT4`. Ensuite, le programme entre dans une boucle infinie qui affiche le format écran `FMT4` et attend que l'utilisateur saisisse une option.
+
+Les options disponibles sont les suivantes :
+
+* `Sortie` : cette option permet de quitter la procédure de suppression.
+* `Annuler` : cette option permet d'annuler la suppression de la course sélectionnée.
+
+Si l'utilisateur saisit l'option `Confirmer`, le programme supprime la course sélectionnée du fichier RACEL1.
+
+Traitement du F6=Création
+-------------------------
+
+La procédure `Creaturae` est appelée lorsque l'utilisateur appuie sur la touche F6 pour créer une nouvelle course. Cette procédure permet de saisir les informations de la nouvelle course dans le format écran `FMT6`.
+
+Tout d'abord, les champs du format écran `FMT6` sont initialisés à blanc. Ensuite, le programme entre dans une boucle infinie qui affiche le format écran `FMT6` et attend que l'utilisateur saisisse une option.
+
+Les options disponibles sont les suivantes :
+
+* `Annuler` : cette option permet d'annuler la création de la nouvelle course.
+* `Sortie` : cette option permet de quitter la procédure de création.
+* `Aide` : cette option permet d'afficher un écran d'aide pour la saisie des informations de la nouvelle course.
+
+Si l'utilisateur saisit l'option `Confirmer`, le programme vérifie si les informations saisies sont valides. Si les informations sont valides, la nouvelle course est ajoutée au fichier RACEL1.
+
+Conclusion
+----------
+
+Dans ce document, nous avons expliqué en détail le code du programme RACERILE. Nous avons vu comment les différentes procédures sont appelées en fonction des options saisies par l'utilisateur, et comment les informations de course sont gérées dans le fichier RACEL1. Nous espérons que cette explication détaillée vous aidera à mieux comprendre le fonctionnement du programme RACERILE.
