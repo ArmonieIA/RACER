@@ -30,9 +30,7 @@ Le programme RACERILE utilise les variables suivantes :
 | Nom | Type | Longueur | Décimales | Description |
 | --- | --- | --- | --- | --- |
 | SFL1 | SFILE |  |  | Sous-fichier de la liste des courses |
-| SFL2 | SFILE |  |  | Sous-fichier de la liste des types de courses |
 | RRN1 | Packed | 4,0 |  | Numéro d'enregistrement du sous-fichier SFL1 |
-| RRN2 | Packed | 4,0 |  | Numéro d'enregistrement du sous-fichier SFL2 |
 | INFO |  |  |  | Informations sur la saisie clavier |
 | CFKEY | Char | 1 |  | Touche fonction saisie clavier |
 | AUTORISATION | Char | 1 |  | Indicateur d'autorisation de modification |
@@ -141,26 +139,26 @@ Le programme RACERILE utilise les écrans suivants :
 | Nom | Description |
 | --- | --- |
 | RACEDILE | Écran principal du programme |
-| RACECR | Écran de création d'une course |
-| RACEMAJ | Écran de modification d'une course |
-| RACEAFF | Écran d'affichage d'une course |
-| RACEIMP | Écran d'impression d'une course |
-| RACESUP | Écran de suppression d'une course |
-| RACETP | Écran de sélection du type de course |
-| RACEOPT | Écran de sélection de l'option |
-| RACEPAG | Écran de pagination du sous-fichier |
-| RACECLE | Écran de saisie clavier |
-| RACEAID | Écran d'aide |
-| RACEANN | Écran d'annulation |
-| RACEIMPR | Écran d'impression |
-| RACECREA | Écran de création |
-| RACEMOD | Écran de modification |
-| RACESUPP | Écran de suppression |
-| RACEAFFI | Écran d'affichage |
-| RACESEL | Écran de sélection |
-| RACERO | Écran de défilement |
-| RACENAM | Écran de changement de nom |
-| RACESF | Écran de fin du sous-fichier |
+| RACECR | Format de l'écran RACEDILE pour la création d'une course |
+| RACEMAJ | Format de l'écran RACEDILE pour la modification d'une course |
+| RACEAFF | Format de l'écran RACEDILE pour l'affichage d'une course |
+| RACEIMP | Format de l'écran RACEDILE pour l'impression d'une course |
+| RACESUP | Format de l'écran RACEDILE pour la suppression d'une course |
+| RACETP | Format de l'écran RACEDILE pour la sélection du type de course |
+| RACEOPT | Format de l'écran RACEDILE pour la sélection de l'option |
+| RACEPAG | Format de l'écran RACEDILE pour la pagination du sous-fichier |
+| RACECLE | Format de l'écran RACEDILE pour la saisie clavier |
+| RACEAID | Format de l'écran RACEDILE pour l'aide |
+| RACEANN | Format de l'écran RACEDILE pour l'annulation |
+| RACEIMPR | Format de l'écran RACEDILE pour l'impression |
+| RACECREA | Format de l'écran RACEDILE pour la création |
+| RACEMOD | Format de l'écran RACEDILE pour la modification |
+| RACESUPP | Format de l'écran RACEDILE pour la suppression |
+| RACEAFFI | Format de l'écran RACEDILE pour l'affichage |
+| RACESEL | Format de l'écran RACEDILE pour la sélection |
+| RACERO | Format de l'écran RACEDILE pour le défilement |
+| RACENAM | Format de l'écran RACEDILE pour le changement de nom |
+| RACESF | Format de l'écran RACEDILE pour la fin du sous-fichier |
 
 Fichiers
 --------
@@ -178,15 +176,7 @@ Remarques
 
 Le programme RACERILE est un programme de démonstration et ne doit pas être utilisé en production sans modification. Il est recommandé de tester le programme dans un environnement de test avant de l'utiliser en production.
 
-Le programme RACERILE utilise des données fictives et ne doit pas être utilisé pour gérer des données réelles sans modification.
-
-Le programme RACERILE utilise des fonctions et des procédures externes qui doivent être présentes dans la bibliothèque RACES. Il est recommandé de vérifier la présence de ces éléments avant d'exécuter le programme.
-
-Le programme RACERILE utilise des écrans qui doivent être présents dans la bibliothèque QUSRSYS. Il est recommandé de vérifier la présence de ces écrans avant d'exécuter le programme.
-
-Le programme RACERILE utilise des données stockées dans des data areas. Il est recommandé de vérifier la présence de ces data areas avant d'exécuter le programme.
-
-Le programme RACERILE utilise des commandes système qui nécessitent des autorisations spécifiques. Il est recommandé de vérifier les autorisations de l'utilisateur avant d'exécuter le programme.
+Le programme RACERILE utilise des données fictives
 
 RACERILE : Explication détaillée du code
 =======================================
