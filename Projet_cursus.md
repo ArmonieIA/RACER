@@ -1,4 +1,3 @@
-Excusez-moi, je me suis trompé dans ma précédente réponse. Voici la documentation mise à jour pour le projet CURSUS :
 
 # Projet CURSUS
 
